@@ -51,4 +51,7 @@ class Loan {
 	protected void setInterestRate(float interestRate) {
 		this.interestRate = interestRate;
 	}
+	
+	//put the add and remove methods here
+	
 }

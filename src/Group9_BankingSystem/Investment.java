@@ -50,5 +50,7 @@ class Investment {
 		this.nickname = nickname;
 	}
 	
+	//put the add and remove methods here
+	
 }
 

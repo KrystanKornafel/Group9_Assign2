@@ -51,6 +51,7 @@ class Checking {
 		this.nickname = nickname;
 	}
 	
+	//put the add and remove methods here
 
 }
 
