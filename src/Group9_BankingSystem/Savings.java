@@ -29,9 +29,10 @@ class Savings {
 	 * @param accountNum is used to get the account number for the client
 	 * @param nickname is used to get the nickname for the client's account
 	 */
-	public Savings (long accountNum, String nickname, Client client) {
+	public Savings (long accountNum, String nickname, float interestRate, Client client) {
 		this.accountNum = accountNum;
 		this.nickname = nickname;
+		this.interestRate = interestRate;
 		this.client = client;
 	}
 	
