@@ -59,6 +59,7 @@ class Savings {
 		this.interestRate = interestRate;
 	}
 	
+	//put the add and remove methods here
 }
 
 

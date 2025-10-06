@@ -58,6 +58,6 @@ class Client {
 		this.isBMOClient = isBMOClient; //return this instance of accountNum
 	}
 	
-	
+	//put the add and remove methods here
 	
 }
