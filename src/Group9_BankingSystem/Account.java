@@ -5,7 +5,7 @@ import java.util.Scanner;
  * <p>Class: SEG2105
  * <p>Assignment: Assignment 2
  *
- * <p>Description: This is the Savings class, used to collect the information for the client's savings account.
+ * <p>Description: This is the Account class, used to store the data for each account.
  */
 
 
@@ -13,25 +13,19 @@ public interface Account {
 
 	/** The parameter accountNum is used to get the account number for a particular client **/
 	private long acountNum;
-	/** The parameter nickname is used to get the nickname for a particular account **/
-	private String nickname;
-	/** The parameter interestRate is used to determine the interest rate for a particular account **/
-	private float interestRate;
 	/** Used to store the client's other information such as ageGroup and businessType **/
 	private Client client;
+		
+	//getters and setters for accountNum
+		protected getAccountNum(){
+			return accountNum;
+		}
+		protected void setAccountNum(long accountNum) {
+			this.accountNum = accountNum;
+		}
 	
-//	/** No arg constructor*/
-//	public Account () {
-//	}
-//	
-//	/**
-//	 * Parameterized constructor to allow data to be passed into the object. The data can then be used to create the checking account for a particular client.
-//	 * @param accountNum is used to get the account number for the client
-//	 * @param nickname is used to get the nickname for the client's account
-//	 */
-//	public Account (long accountNum, String nickname,  Client client) {
-//		this.accountNum = accountNum;
-//		this.nickname = nickname;
-//		this.client = client;
-//	}
+	public void addClient();
+	public void removeClient();
+	
+
 }
