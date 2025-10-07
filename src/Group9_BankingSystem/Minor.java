@@ -8,11 +8,8 @@ import java.util.Scanner;
  * <p>Description: This is the Minor class, used to store the information of the Minor clients.
  **/
 
-public class Minor implements Client {
+public class Minor extends Client {
 	
-	/** No arg constructor*/
-	public Minor () {
-	}
 	
 	/**
 	 * Parameterized constructor to allow data to be passed into the object. The data can then be used to create the checking account for a particular client.
@@ -20,24 +17,8 @@ public class Minor implements Client {
 	 * 
 	 * 
 	 */
-	public Minor (String name, boolean isBMOMember, Account account) {
-		super.(name, isBMOMember, account); //takes the information from the super class, which is Client 
+	public Minor (String name, boolean isBMOMember, Account account, int clientNumber) {
+		super.(name, isBMOMember, account, clientNumber); //takes the information from the super class, which is Client 
 	}
-	
 
-	/**
-	 * Implements the Client's add method
-	 */
-	@Override
-	public void addAccount() {
-		
-	}
-	
-	/**
-	 * Implements the Client's remove method
-	 */
-	@Override
-	public void removeAccount() {
-		
-	}
 }

@@ -58,7 +58,7 @@ import java.util.Scanner;
 	}
 	
 	//put the add and remove methods here
-	public void addAccount(Account account) {
+	protected void addAccount(Account account) {
 		numAccounts++;
 		Account[] newArray = new Account[numAccounts];
 		for (int i = 0; i < numAccounts - 1; i++) {
@@ -67,7 +67,7 @@ import java.util.Scanner;
 		newArray[numAccounts-1] = account;
 		AccountArray = newArray;
 	}
-	public void removeAccount() {
+	protected void removeAccount() {
 		if (numAccounts == 0) {
 			System.out.println("Error: No account to remove");
 		}

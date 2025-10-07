@@ -7,12 +7,8 @@ import java.util.Scanner;
  *
  * <p>Description: This is the Adult class, used to store the information of the Student's account. 
  **/
-public class Student implements Client {
+public class Student extends Client {
 	
-	
-	/** No arg constructor*/
-	public Student () {
-	}
 	
 	/**
 	 * Parameterized constructor to allow data to be passed into the object. The data can then be used to create the checking account for a particular client.
@@ -20,23 +16,8 @@ public class Student implements Client {
 	 * 
 	 * 
 	 */
-	public Student (String name, boolean isBMOMember, Account account) {
-		super.(name, isBMOMember, account); //takes the information from the super class, which is Client 
+	public Student (String name, boolean isBMOMember, Account account, int clientNumber) {
+		super.(name, isBMOMember, account, clientNumber); //takes the information from the super class, which is Client 
 	}
 
-	/**
-	 * Implements the Client's add method
-	 */
-	@Override
-	public void addAccount() {
-		
-	}
-	
-	/**
-	 * Implements the Client's remove method
-	 */
-	@Override
-	public void removeAccount() {
-		
-	}
 }

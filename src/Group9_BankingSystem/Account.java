@@ -43,7 +43,7 @@ public abstract class Account {
 		this.accountNum = accountNum;
 	}
 	
-	public void addClient(Client client) {
+	protected void addClient(Client client) {
 		if (numClients == 8) {
 			System.out.println("Error: Too many clients");
 		} else {
@@ -56,7 +56,7 @@ public abstract class Account {
 			clientArray = newArray;
 		}
 	}
-	public void removeClient() {
+	protected void removeClient() {
 		if (numClients == 1) {
 			System.out.println("Error: Too few clients");
 		}

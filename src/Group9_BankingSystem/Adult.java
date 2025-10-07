@@ -7,13 +7,9 @@ import java.util.Scanner;
  *
  * <p>Description: This is the Adult class, used to store the information of the Adult clients
  **/
-public class Adult implements Client {
+public class Adult extends Client {
 	/** Used to determine if client is an investor, individual, small business, or large business **/
 	private String businessType;
-	
-	/** No arg constructor*/
-	public Adult () {
-	}
 	
 	/**
 	 * Parameterized constructor to allow data to be passed into the object. The data can then be used to create the checking account for a particular client.
@@ -21,34 +17,17 @@ public class Adult implements Client {
 	 * @param nickname is used to get the nickname for the client's account
 	 * @param client is used to get the information on the client object 
 	 */
-	public Adult (String name, boolean isBMOMember, Account account, String businessType) {
-		super.(name, isBMOMember, account); //takes the information from the super class, which is Client
+	public Adult (String name, boolean isBMOMember, Account account, int clientNumber, String businessType) {
+		super.(name, isBMOMember, account, clientNumber); //takes the information from the super class, which is Client
 		this.businessType = businessType; 
 	}
 	
 	//Getters and setters used to get the information about the business type of the client
-	protected getBusinessType(){
+	public getBusinessType(){
 		return businessType;
 	}
-	protected void setBusinessType(String businessType) {
+	public void setBusinessType(String businessType) {
 		this.businessType = businessType; //return this instance of accountNum
-	}
-	
-	
-	/**
-	 * Implements the Client's add method
-	 */
-	@Override
-	public void addAccount() {
-		
-	}
-	
-	/**
-	 * Implements the Client's remove method
-	 */
-	@Override
-	public void removeAccount() {
-		
 	}
 	
 }
