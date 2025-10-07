@@ -18,31 +18,36 @@ import java.util.Scanner;
 	private boolean isBMOMember;
 	/** Account object, used to store and retrieve information of a client's specific account **/
 	/** Used to store the client's other information such as ageGroup and businessType **/
-	private Account account;
+	private Account[] accountArray;
 	
-	/** 
-	 * No-arg constructor
-	 */
-	public Client() {
-		
-	}
-	
+	private int clientNumber;
+	private int numAccounts;
 	/** 
 	 * Parameterized constructor
 	 */
-	public Client(String name, boolean isBMOMember, Account account) {
+	public Client(String name, boolean isBMOMember, Account account, int clientNumber) {
 		this.name = name;
 		this.isBMOMember = isBMOMember;
-		this.account = account; //get this instance of the account object and store it for later use
+		this.accountArray = new Account[1]; //get this instance of the account object and store it for later use
+		this.accountArray[0] = account;
+		this.numAccounts = 1;
+		this.clientNumber = clientNumber;
 	}
 	
 	//Getters and setters used to get the information about the business type of the client
-		protected getName(){
-			return name;
-		}
-		protected void setName(String name) {
-			this.name = name; //return this instance of clientName
-		}
+	protected getName(){
+		return name;
+	}
+	protected void setName(String name) {
+		this.name = name; //return this instance of clientName
+	}
+	
+	protected getClientNumber() {
+		return clientNumber;
+	}
+	protected void setClientNumber(int clientNumber) {
+		this.clientNumber = clientNumber;
+	}
 	
 	//Getters and setters used to get the information about the business type of the client
 	protected getIsBMOMember(){
@@ -53,11 +58,38 @@ import java.util.Scanner;
 	}
 	
 	//put the add and remove methods here
-	public void addAccount() {
-		//add implementation
+	public void addAccount(Account account) {
+		numAccounts++;
+		Account[] newArray = new Account[numAccounts];
+		for (int i = 0; i < numAccounts - 1; i++) {
+			newArray[i] = accountArray[i];
+		}
+		newArray[numAccounts-1] = account;
+		AccountArray = newArray;
 	}
 	public void removeAccount() {
-		//add implementation
+		if (numAccounts == 0) {
+			System.out.println("Error: No account to remove");
+		}
+		Scanner reader = new Scanner(System.in);
+		System.out.println("Please enter the account number of the account you wish to remove: ");
+		int n = reader.nextInt();
+		reader.close();
+		for (int i = 0; i < numAccounts; i++) {
+			if (accountArray[i].getAccountNumber() == n) {
+				numAccounts--;
+				Account[] newArray = new Account[numAccounts];
+				int k = 0;
+				for (int j = 0; j < numAccounts - 1; j++) {
+					if (j == i) { k++; }
+					newArray[j] = AccountArray[k];
+					k++;
+				}
+				accountArray = newArray;
+				return;
+			}
+		}
+		System.out.println("Error: Invalid account number");
 	}
 	
 }
