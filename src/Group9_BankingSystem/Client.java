@@ -8,7 +8,8 @@ import java.util.Scanner;
  * <p>Description: This is the Client class, responsible for collecting all the data for each client.
  * <p> This class will also be used to record which accounts, investments and loans they have.
  */
-public interface Client {
+
+	public abstract class Client {
 	
 	/** Used to get the name of the client **/
 	private String name;
@@ -18,6 +19,22 @@ public interface Client {
 	/** Account object, used to store and retrieve information of a client's specific account **/
 	/** Used to store the client's other information such as ageGroup and businessType **/
 	private Account account;
+	
+	/** 
+	 * No-arg constructor
+	 */
+	public Client() {
+		
+	}
+	
+	/** 
+	 * Parameterized constructor
+	 */
+	public Client(String name, boolean isBMOMember, Account account) {
+		this.name = name;
+		this.isBMOMember = isBMOMember;
+		this.account = account; //get this instance of the account object and store it for later use
+	}
 	
 	//Getters and setters used to get the information about the business type of the client
 		protected getName(){
@@ -36,7 +53,11 @@ public interface Client {
 	}
 	
 	//put the add and remove methods here
-	public void addAccount();
-	public void removeAccount();
+	public void addAccount() {
+		//add implementation
+	}
+	public void removeAccount() {
+		//add implementation
+	}
 	
 }
