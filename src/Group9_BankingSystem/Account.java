@@ -12,7 +12,7 @@ import java.util.Scanner;
 public abstract class Account {
 
 	/** The parameter accountNum is used to get the account number for a particular client **/
-	private long acountNum;
+	private long accountNum;
 	/** Used to store the client's other information such as ageGroup and businessType **/
 	private Client[] clientArray;
 	private int numClients;
@@ -36,7 +36,7 @@ public abstract class Account {
 	}
 	
 	//getters and setters for accountNum
-	protected getAccountNum(){
+	protected long getAccountNum(){
 		return accountNum;
 	}
 	protected void setAccountNum(long accountNum) {
@@ -80,5 +80,9 @@ public abstract class Account {
 		}
 		System.out.println("Error: Invalid client number");
 	}
-
+	protected void listClients() {
+		for (int i = 0; i < numClients; i++) {
+			System.out.println("Client " + i + ": " + clientArray[i].getName() + " (#" + clientArray[i].getClientNumber() + ")");
+		}
+	}
 }

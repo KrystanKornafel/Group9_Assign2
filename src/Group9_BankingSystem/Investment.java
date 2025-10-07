@@ -8,7 +8,7 @@ import java.util.Scanner;
  * <p>Description: This is the Investment class, used to collect the information of each investment a client has.
  */
 //This class implements the ___ class
-public class Investment implements Account {
+public class Investment extends Account {
 	
 	/** The parameter nickname is used to get the nickname for a particular account **/
 	private String nickname;
@@ -20,12 +20,12 @@ public class Investment implements Account {
 	 * @param client is used to get the information on the client object 
 	 */
 	public Investment (long accountNum, String nickname, Client client) {
-		super.(accountNum, client); //Inherits this number from the Account super class
+		super(accountNum, client); //Inherits this number from the Account super class
 		this.nickname = nickname;
 	}
 	
 	//Getters and setters for the nickname of a particular account 
-	public getNickname(){
+	public String getNickname(){
 		return nickname;
 	}
 	public void setNickname(String nickname) {

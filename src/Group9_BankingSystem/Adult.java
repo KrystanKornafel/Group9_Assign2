@@ -17,13 +17,13 @@ public class Adult extends Client {
 	 * @param nickname is used to get the nickname for the client's account
 	 * @param client is used to get the information on the client object 
 	 */
-	public Adult (String name, boolean isBMOMember, Account account, int clientNumber, String businessType) {
-		super.(name, isBMOMember, account, clientNumber); //takes the information from the super class, which is Client
+	public Adult (String name, boolean isBMOMember, Account account, long clientNumber, String businessType) {
+		super(name, isBMOMember, account, clientNumber); //takes the information from the super class, which is Client
 		this.businessType = businessType; 
 	}
 	
 	//Getters and setters used to get the information about the business type of the client
-	public getBusinessType(){
+	public String getBusinessType(){
 		return businessType;
 	}
 	public void setBusinessType(String businessType) {

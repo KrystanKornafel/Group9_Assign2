@@ -9,7 +9,7 @@ import java.util.Scanner;
  */
 
 //This class implements the ___ class
-public class Savings implements Account {
+public class Savings extends Account {
 	
 	/** The parameter nickname is used to get the nickname for a particular account **/
 	private String nickname;
@@ -23,13 +23,13 @@ public class Savings implements Account {
 	 * @param nickname is used to get the nickname for the client's account
 	 */
 	public Savings (long accountNum, String nickname, float interestRate, Client client) {
-		super.(accountNum, client); //inherits this number from the Account super class
+		super(accountNum, client); //inherits this number from the Account super class
 		this.nickname = nickname;
 		this.interestRate = interestRate;
 	}
 	
 	//Getters and setters for the nickname of a particular account 
-	public getNickname(){
+	public String getNickname(){
 		return nickname;
 	}
 	public void setNickname(String nickname) {
@@ -37,7 +37,7 @@ public class Savings implements Account {
 	}
 	
 	//Getters and setters for account's interest rate
-	public getInterestRate(){
+	public float getInterestRate(){
 		return interestRate;
 	}
 	public void setInterestRate(float interestRate) {
