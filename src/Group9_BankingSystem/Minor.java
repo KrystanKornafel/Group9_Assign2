@@ -17,8 +17,8 @@ public class Minor extends Client {
 	 * 
 	 * 
 	 */
-	public Minor (String name, boolean isBMOMember, Account account, int clientNumber) {
-		super.(name, isBMOMember, account, clientNumber); //takes the information from the super class, which is Client 
+	public Minor (String name, boolean isBMOMember, Account account, long clientNumber) {
+		super(name, isBMOMember, account, clientNumber); //takes the information from the super class, which is Client 
 	}
 
 }

@@ -20,12 +20,12 @@ import java.util.Scanner;
 	/** Used to store the client's other information such as ageGroup and businessType **/
 	private Account[] accountArray;
 	
-	private int clientNumber;
+	private long clientNumber;
 	private int numAccounts;
 	/** 
 	 * Parameterized constructor
 	 */
-	public Client(String name, boolean isBMOMember, Account account, int clientNumber) {
+	public Client(String name, boolean isBMOMember, Account account, long clientNumber) {
 		this.name = name;
 		this.isBMOMember = isBMOMember;
 		this.accountArray = new Account[1]; //get this instance of the account object and store it for later use
@@ -35,14 +35,14 @@ import java.util.Scanner;
 	}
 	
 	//Getters and setters used to get the information about the business type of the client
-	protected getName(){
+	protected String getName(){
 		return name;
 	}
 	protected void setName(String name) {
 		this.name = name; //return this instance of clientName
 	}
 	
-	protected getClientNumber() {
+	protected long getClientNumber() {
 		return clientNumber;
 	}
 	protected void setClientNumber(int clientNumber) {
@@ -50,7 +50,7 @@ import java.util.Scanner;
 	}
 	
 	//Getters and setters used to get the information about the business type of the client
-	protected getIsBMOMember(){
+	protected boolean getIsBMOMember(){
 		return isBMOMember;
 	}
 	protected void setIsBMOMember(boolean isBMOMember) {
@@ -65,7 +65,7 @@ import java.util.Scanner;
 			newArray[i] = accountArray[i];
 		}
 		newArray[numAccounts-1] = account;
-		AccountArray = newArray;
+		accountArray = newArray;
 	}
 	protected void removeAccount() {
 		if (numAccounts == 0) {
@@ -76,13 +76,13 @@ import java.util.Scanner;
 		int n = reader.nextInt();
 		reader.close();
 		for (int i = 0; i < numAccounts; i++) {
-			if (accountArray[i].getAccountNumber() == n) {
+			if (accountArray[i].getAccountNum() == n) {
 				numAccounts--;
 				Account[] newArray = new Account[numAccounts];
 				int k = 0;
 				for (int j = 0; j < numAccounts - 1; j++) {
 					if (j == i) { k++; }
-					newArray[j] = AccountArray[k];
+					newArray[j] = accountArray[k];
 					k++;
 				}
 				accountArray = newArray;

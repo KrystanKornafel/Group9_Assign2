@@ -20,13 +20,13 @@ public class Checking extends Account {
 	 * @param nickname is used to get the nickname for the client's account
 	 * @param client is used to get the information on the client object 
 	 */
-	public Chequing (long accountNum, String nickname, Client client) {
-		super.(accountNum, client); //Inherits this number from the Account super class
+	public Checking (long accountNum, String nickname, Client client) {
+		super(accountNum, client); //Inherits this number from the Account super class
 		this.nickname = nickname;
 	}
 	
 	//Getters and setters for the nickname of a particular account 
-	public getNickname(){
+	public String getNickname(){
 		return nickname;
 	}
 	public void setNickname(String nickname) {

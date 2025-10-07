@@ -8,7 +8,7 @@ import java.util.Scanner;
  * <p>Description: This is the Loan class, used to collect the information of each loan a client has.
  */
 //This class implements the ___ class
-public class Loan implements Account {
+public class Loan extends Account {
 	
 	/** The parameter interestRate is used to determine the interest rate for a particular account **/
 	private float interestRate;
@@ -21,13 +21,13 @@ public class Loan implements Account {
 	 * @param client is used to get the information on the client object 
 	 */
 	public Loan (long accountNum, float interestRate, Client client) {
-		super.(accountNum, client); //Inherits this number from the Account super class
+		super(accountNum, client); //Inherits this number from the Account super class
 		this.interestRate = interestRate;
 	}
 
 	
 	//Getters and setters for account's interest rate
-	public getInterestRate(){
+	public float getInterestRate(){
 		return interestRate;
 	}
 	public void setInterestRate(float interestRate) {
