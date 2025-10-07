@@ -8,14 +8,10 @@ import java.util.Scanner;
  * <p>Description: This is the Investment class, used to collect the information of each investment a client has.
  */
 //This class implements the ___ class
-class Investment {
+public class Investment implements Account {
 	
-	/** The parameter accountNum is used to get the account number for a particular client **/
-	private long acountNum;
 	/** The parameter nickname is used to get the nickname for a particular account **/
 	private String nickname;
-	/** Used to store the client's other information such as ageGroup and businessType **/
-	private Client client;
 
 	/** No arg constructor*/
 	public Investment () {
@@ -28,18 +24,8 @@ class Investment {
 	 * @param client is used to get the information on the client object 
 	 */
 	public Investment (long accountNum, String nickname, Client client) {
-		this.accountNum = accountNum;
+		super.(accountNum, client); //Inherits this number from the Account super class
 		this.nickname = nickname;
-		this.client = client;
-	}
-
-	
-	//Getters and setters for the client's account number 
-	protected getAccountNum(){
-		return accountNum;
-	}
-	protected void setAccountNum(long accountNum) {
-		this.accountNum = accountNum; //return this instance of accountNum
 	}
 	
 	//Getters and setters for the nickname of a particular account 
@@ -51,6 +37,15 @@ class Investment {
 	}
 	
 	//put the add and remove methods here
+	@Override
+	public void addClient() {
+		
+	}
+	
+	@Override
+	public void removeClient() {
+		
+	}
 	
 }
 
