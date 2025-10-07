@@ -16,9 +16,6 @@ public class Savings implements Account {
 	/** The parameter interestRate is used to determine the interest rate for a particular account **/
 	private float interestRate;
 	
-	/** No arg constructor*/
-	public Savings () {
-	}
 	
 	/**
 	 * Parameterized constructor to allow data to be passed into the object. The data can then be used to create the checking account for a particular client.
@@ -32,31 +29,21 @@ public class Savings implements Account {
 	}
 	
 	//Getters and setters for the nickname of a particular account 
-	protected getNickname(){
+	public getNickname(){
 		return nickname;
 	}
-	protected void setNickname(String nickname) {
+	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
 	
 	//Getters and setters for account's interest rate
-	protected getInterestRate(){
+	public getInterestRate(){
 		return interestRate;
 	}
-	protected void setInterestRate(float interestRate) {
+	public void setInterestRate(float interestRate) {
 		this.interestRate = interestRate;
 	}
-	
-	//put the add and remove methods here
-	@Override
-	public void addClient() {
-		
-	}
-	
-	@Override
-	public void removeClient() {
-		
-	}
+
 }
 
 

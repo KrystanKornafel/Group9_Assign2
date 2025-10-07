@@ -13,10 +13,6 @@ public class Investment implements Account {
 	/** The parameter nickname is used to get the nickname for a particular account **/
 	private String nickname;
 
-	/** No arg constructor*/
-	public Investment () {
-	}
-	
 	/**
 	 * Parameterized constructor to allow data to be passed into the object. The data can then be used to create the checking account for a particular client.
 	 * @param accountNum is used to get the account number for the client
@@ -29,23 +25,13 @@ public class Investment implements Account {
 	}
 	
 	//Getters and setters for the nickname of a particular account 
-	protected getNickname(){
+	public getNickname(){
 		return nickname;
 	}
-	protected void setNickname(String nickname) {
+	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
 	
-	//put the add and remove methods here
-	@Override
-	public void addClient() {
-		
-	}
-	
-	@Override
-	public void removeClient() {
-		
-	}
 	
 }
 
