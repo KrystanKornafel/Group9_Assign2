@@ -424,10 +424,65 @@ public class BankingSystemMain {
 	private static void addPoints () {
 		//prompt user to enter the client information to look up the client
 		//once the client is found, can add points to that client
+		System.out.print("Enter client number to add to account: ");
+		long clientNum = input.nextLong();
+		
+		Client selectedClient = null;
+		for (Client c : clients) {
+			if (c.getClientNumber() == clientNum) {
+				selectedClient = c;
+				break;
+			}
+		}
+		
+		if (selectedClient == null) {
+			System.out.println("Error: Client not found.");
+			return;
+		} 
+		
+			//prompt the user for the number of points to add to the client's profile
+			System.out.print("Enter the number of points you wish to add to the Client's profile: ");
+			int points = input.nextInt();
+			//adds the new # of points to the original balance to get the new total
+			int newTotal = selectedClient.getLoyaltyPoints() + points;
+			//using the input provided, add the points to the client 
+			selectedClient.setLoyaltyPoints(newTotal);
+			
+			//print out the points so the user of the program has an update on the amount of points a client has
+			//I did selectedClient.getLoyaltyPoints() instead of newTotal because I wanted to verify that the correct information is on the client's profile
+			System.out.println("The client now has: " + selectedClient.getLoyaltyPoints());
+		
 	}
 	
 	private static void removePoints () {
 		//prompt user to enter the client information to look up the client
 		//once the client is found, can remove points to that client
+		System.out.print("Enter client number to add to account: ");
+		long clientNum = input.nextLong();
+		
+		Client selectedClient = null;
+		for (Client c : clients) {
+			if (c.getClientNumber() == clientNum) {
+				selectedClient = c;
+				break;
+			}
+		}
+		
+		if (selectedClient == null) {
+			System.out.println("Error: Client not found.");
+			return;
+		} 
+		
+		//get old balance of the # of points
+		int oldBalance = selectedClient.getLoyaltyPoints();
+		//set the new balance
+		System.out.print("Enter the number of points you wish to remove from the client's profile: ");
+		int pointsToRemove = input.nextInt();
+		int updatedTotal = oldBalance - pointsToRemove;
+		selectedClient.setLoyaltyPoints(updatedTotal); //put the new total of points to the client's profile
+		
+		//print out the new balance
+		//I did selectedClient.getLoyaltyPoints() instead of updatedTotal because I wanted to verify that the correct information is on the client's profile
+		System.out.println("The client now has: " + selectedClient.getLoyaltyPoints());
 	}
 }

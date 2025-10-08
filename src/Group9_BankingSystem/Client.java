@@ -22,6 +22,8 @@ import java.util.Scanner;
 	
 	private long clientNumber;
 	private int numAccounts;
+	private int loyaltyPoints;
+	
 	/** 
 	 * Parameterized constructor
 	 */
@@ -63,6 +65,14 @@ import java.util.Scanner;
 	protected void setIsBMOMember(boolean isBMOMember) {
 		this.isBMOMember = isBMOMember; //return this instance of isBMOMember
 	}
+	
+	//Getters and setters used to get and set the # of loyalty points for the client
+		protected int getLoyaltyPoints(){
+			return loyaltyPoints;
+		}
+		protected void setLoyaltyPoints(int loyaltyPoints) {
+			this.loyaltyPoints = loyaltyPoints; //return this instance of loyaltyPoints
+		}
 	
 	//put the add and remove methods here
 	protected void addAccount(Account account) {
