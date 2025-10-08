@@ -16,8 +16,8 @@ public class Student extends Client {
 	 * 
 	 * 
 	 */
-	public Student (String name, boolean isBMOMember, Account account, long clientNumber) {
-		super(name, isBMOMember, account, clientNumber); //takes the information from the super class, which is Client 
+	public Student (String name, boolean isBMOMember, long clientNumber) {
+		super(name, isBMOMember, clientNumber); //takes the information from the super class, which is Client 
 	}
 
 }
