@@ -424,7 +424,7 @@ public class BankingSystemMain {
 	private static void addPoints () {
 		//prompt user to enter the client information to look up the client
 		//once the client is found, can add points to that client
-		System.out.print("Enter client number to add to account: ");
+		System.out.print("Enter client number to add points to: ");
 		long clientNum = input.nextLong();
 		
 		Client selectedClient = null;
@@ -457,7 +457,7 @@ public class BankingSystemMain {
 	private static void removePoints () {
 		//prompt user to enter the client information to look up the client
 		//once the client is found, can remove points to that client
-		System.out.print("Enter client number to add to account: ");
+		System.out.print("Enter client number to remove points from: ");
 		long clientNum = input.nextLong();
 		
 		Client selectedClient = null;
@@ -478,6 +478,10 @@ public class BankingSystemMain {
 		//set the new balance
 		System.out.print("Enter the number of points you wish to remove from the client's profile: ");
 		int pointsToRemove = input.nextInt();
+		if (pointsToRemove > oldBalance) {
+			System.out.println("Error: Client does not have enough points to remove");
+			return;
+		}
 		int updatedTotal = oldBalance - pointsToRemove;
 		selectedClient.setLoyaltyPoints(updatedTotal); //put the new total of points to the client's profile
 		
