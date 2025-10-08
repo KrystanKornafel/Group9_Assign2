@@ -8,56 +8,88 @@ import java.util.Scanner;
  * <p>Description: This is the Client class, responsible for collecting all the data for each client.
  * <p> This class will also be used to record which accounts, investments and loans they have.
  */
-class Client {
+
+	public abstract class Client {
 	
-	/** Used to determine if the client in a minor, student or adult **/
-	private String ageGroup;
-	/** Used to determine if client is an investor, individual, small business, or large business **/
-	private String businessType;
+	/** Used to get the name of the client **/
+	private String name;
 	/** Since this application collects information for clients from other banks, see if the client is from BMO.
 	* Use the bollean variable to determine if the client is from BMO.**/
-	private boolean isBMOClient;
+	private boolean isBMOMember;
+	/** Account object, used to store and retrieve information of a client's specific account **/
+	/** Used to store the client's other information such as ageGroup and businessType **/
+	private Account[] accountArray;
 	
-	/** No arg constructor*/
-	public Client () {
-	}
-	
-	/**
-	 * Parameterized constructor to allow data to be passed into the object. The data can then be used to create the checking account for a particular client.
-	 * @param accountNum is used to get the account number for the client
-	 * @param nickname is used to get the nickname for the client's account
-	 * @param client is used to get the information on the client object 
+	private long clientNumber;
+	private int numAccounts;
+	/** 
+	 * Parameterized constructor
 	 */
-	public Client (String ageGroup, String businessType, boolean isBMOClient) {
-		this.ageGroup = ageGroup;
-		this.businessType = businessType;
-		this.isBMOClient = isBMOClient;
-	}
-	
-	//Getters and setters for the client's age group
-	protected getAgeGroup(){
-		return ageGroup;
-	}
-	protected void setAgeGroup(String ageGroup) {
-		this.ageGroup = ageGroup; //return this instance of accountNum
+	public Client(String name, boolean isBMOMember, Account account, long clientNumber) {
+		this.name = name;
+		this.isBMOMember = isBMOMember;
+		this.accountArray = new Account[1]; //get this instance of the account object and store it for later use
+		this.accountArray[0] = account;
+		this.numAccounts = 1;
+		this.clientNumber = clientNumber;
 	}
 	
 	//Getters and setters used to get the information about the business type of the client
-	protected getBusinessType(){
-		return businessType;
+	protected String getName(){
+		return name;
 	}
-	protected void setBusinessType(String businessType) {
-		this.businessType = businessType; //return this instance of accountNum
+	protected void setName(String name) {
+		this.name = name; //return this instance of clientName
+	}
+	
+	protected long getClientNumber() {
+		return clientNumber;
+	}
+	protected void setClientNumber(int clientNumber) {
+		this.clientNumber = clientNumber;
 	}
 	
 	//Getters and setters used to get the information about the business type of the client
-	protected getIsBMOClient(){
-		return isBMOClient;
+	protected boolean getIsBMOMember(){
+		return isBMOMember;
 	}
-	protected void setIsBMOClient(boolean isBMOClient) {
-		this.isBMOClient = isBMOClient; //return this instance of accountNum
+	protected void setIsBMOMember(boolean isBMOMember) {
+		this.isBMOMember = isBMOMember; //return this instance of isBMOMember
 	}
 	
 	//put the add and remove methods here
+	protected void addAccount(Account account) {
+		numAccounts++;
+		Account[] newArray = new Account[numAccounts];
+		for (int i = 0; i < numAccounts - 1; i++) {
+			newArray[i] = accountArray[i];
+		}
+		newArray[numAccounts-1] = account;
+		accountArray = newArray;
+	}
+	protected void removeAccount() {
+		if (numAccounts == 0) {
+			System.out.println("Error: No account to remove");
+		}
+		Scanner reader = new Scanner(System.in);
+		System.out.println("Please enter the account number of the account you wish to remove: ");
+		int n = reader.nextInt();
+		reader.close();
+		for (int i = 0; i < numAccounts; i++) {
+			if (accountArray[i].getAccountNum() == n) {
+				numAccounts--;
+				Account[] newArray = new Account[numAccounts];
+				int k = 0;
+				for (int j = 0; j < numAccounts - 1; j++) {
+					if (j == i) { k++; }
+					newArray[j] = accountArray[k];
+					k++;
+				}
+				accountArray = newArray;
+				return;
+			}
+		}
+		System.out.println("Error: Invalid account number");
+	}
 	
 }
