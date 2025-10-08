@@ -40,6 +40,8 @@ public class BankingSystemMain {
 			System.out.println("a: Create a new account");
 			System.out.println("da: Display an account");
 			System.out.println("dc: Display a client");
+			System.out.println("ap: Add points to the client");
+			System.out.println("rp: Remove the points from the client");
 			System.out.println("q: Quit program");
 			
 			//prompt the user to choose an option from the menu
@@ -63,6 +65,14 @@ public class BankingSystemMain {
 			case "dc":
 				//print out the information of the specified client
 				displayClient(); //method added to print client info
+				break;
+			case "ap": 
+				//add points
+				addPoints(); //need the client's info
+				break;
+			case "rp":
+				//remove points
+				removePoints(); //need the client's info
 				break;
 			case "q":
 				System.out.println("Thank you for using the BMO program!");
@@ -303,5 +313,15 @@ public class BankingSystemMain {
 				a.listClients();
 			}
 		}
+	}
+	
+	private static void addPoints () {
+		//prompt user to enter the client information to look up the client
+		//once the client is found, can add points to that client
+	}
+	
+	private static void removePoints () {
+		//prompt user to enter the client information to look up the client
+		//once the client is found, can remove points to that client
 	}
 }
