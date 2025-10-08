@@ -9,18 +9,10 @@ import java.util.Scanner;
  */
 
 //This class implements the ___ class
-class Checking {
+public class Checking extends Account {
 	
-	/** The parameter accountNum is used to get the account number for a particular client **/
-	private long acountNum;
 	/** The parameter nickname is used to get the nickname for a particular account **/
 	private String nickname;
-	/** Used to store the client's other information such as ageGroup and businessType **/
-	private Client client;
-
-	/** No arg constructor*/
-	public Chequing () {
-	}
 	
 	/**
 	 * Parameterized constructor to allow data to be passed into the object. The data can then be used to create the checking account for a particular client.
@@ -28,30 +20,18 @@ class Checking {
 	 * @param nickname is used to get the nickname for the client's account
 	 * @param client is used to get the information on the client object 
 	 */
-	public Chequing (long accountNum, String nickname, Client client) {
-		this.accountNum = accountNum;
+	public Checking (long accountNum, String nickname, Client client) {
+		super(accountNum, client); //Inherits this number from the Account super class
 		this.nickname = nickname;
-		this.client = client;
-	}
-
-	
-	//Getters and setters for the client's account number 
-	protected getAccountNum(){
-		return accountNum;
-	}
-	protected void setAccountNum(long accountNum) {
-		this.accountNum = accountNum; //return this instance of accountNum
 	}
 	
 	//Getters and setters for the nickname of a particular account 
-	protected getNickname(){
+	public String getNickname(){
 		return nickname;
 	}
-	protected void setNickname(String nickname) {
+	public void setNickname(String nickname) {
 		this.nickname = nickname;
 	}
-	
-	//put the add and remove methods here
 
 }
 
