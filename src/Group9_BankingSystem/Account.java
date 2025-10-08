@@ -17,13 +17,6 @@ public abstract class Account {
 	private Client[] clientArray;
 	private int numClients;
 	
-	/** 
-	 * No-arg constructor
-	 */
-	public Account() {
-		
-	}
-	
 
 	/** 
 	 * Parameterized constructor
@@ -35,6 +28,14 @@ public abstract class Account {
 		this.numClients = 1;
 	}
 	
+	protected Client[] getClientArray(){
+		return clientArray;
+	}
+	
+	protected void setClientArray(Client[] clientArray){
+		this.clientArray = clientArray;
+	}
+	
 	//getters and setters for accountNum
 	protected long getAccountNum(){
 		return accountNum;
@@ -43,9 +44,10 @@ public abstract class Account {
 		this.accountNum = accountNum;
 	}
 	
-	protected void addClient(Client client) {
+	protected boolean addClient(Client client) {
 		if (numClients == 8) {
 			System.out.println("Error: Too many clients");
+			return false;
 		} else {
 			numClients++;
 			Client[] newArray = new Client[numClients];
@@ -54,35 +56,34 @@ public abstract class Account {
 			}
 			newArray[numClients-1] = client;
 			clientArray = newArray;
+			return true;
 		}
 	}
-	protected void removeClient() {
+	protected boolean removeClient(long clientNum) {
 		if (numClients == 1) {
 			System.out.println("Error: Too few clients");
+			return false;
 		}
-		Scanner reader = new Scanner(System.in);
-		System.out.println("Please enter the client number of the client you wish to remove: ");
-		int n = reader.nextInt();
-		reader.close();
 		for (int i = 0; i < numClients; i++) {
-			if (clientArray[i].getClientNumber() == n) {
+			if (clientArray[i].getClientNumber() == clientNum) {
 				numClients--;
 				Client[] newArray = new Client[numClients];
 				int k = 0;
-				for (int j = 0; j < numClients - 1; j++) {
+				for (int j = 0; j < numClients; j++) {
 					if (j == i) { k++; }
 					newArray[j] = clientArray[k];
 					k++;
 				}
-				clientArray = newArray;
-				return;
+				this.clientArray = newArray;
+				return true;
 			}
 		}
 		System.out.println("Error: Invalid client number");
+		return false;
 	}
 	protected void listClients() {
 		for (int i = 0; i < numClients; i++) {
-			System.out.println("Client " + i + ": " + clientArray[i].getName() + " (#" + clientArray[i].getClientNumber() + ")");
+			System.out.println("Client " + (i+1) + ": " + clientArray[i].getName() + " (#" + clientArray[i].getClientNumber() + ")");
 		}
 	}
 }
