@@ -25,13 +25,20 @@ import java.util.Scanner;
 	/** 
 	 * Parameterized constructor
 	 */
-	public Client(String name, boolean isBMOMember, Account account, long clientNumber) {
+	public Client(String name, boolean isBMOMember, long clientNumber) {
 		this.name = name;
 		this.isBMOMember = isBMOMember;
-		this.accountArray = new Account[1]; //get this instance of the account object and store it for later use
-		this.accountArray[0] = account;
-		this.numAccounts = 1;
+		this.accountArray = new Account[0];
+		this.numAccounts = 0;
 		this.clientNumber = clientNumber;
+	}
+	
+	protected Account[] getAccountArray(){
+		return accountArray;
+	}
+	
+	protected void setAccountArray(Account[] accountArray) {
+		this.accountArray = accountArray;
 	}
 	
 	//Getters and setters used to get the information about the business type of the client
@@ -67,25 +74,22 @@ import java.util.Scanner;
 		newArray[numAccounts-1] = account;
 		accountArray = newArray;
 	}
-	protected void removeAccount() {
+	protected void removeAccount(long accountNum) {
 		if (numAccounts == 0) {
 			System.out.println("Error: No account to remove");
+			return;
 		}
-		Scanner reader = new Scanner(System.in);
-		System.out.println("Please enter the account number of the account you wish to remove: ");
-		int n = reader.nextInt();
-		reader.close();
 		for (int i = 0; i < numAccounts; i++) {
-			if (accountArray[i].getAccountNum() == n) {
+			if (accountArray[i].getAccountNum() == accountNum) {
 				numAccounts--;
 				Account[] newArray = new Account[numAccounts];
 				int k = 0;
-				for (int j = 0; j < numAccounts - 1; j++) {
+				for (int j = 0; j < numAccounts; j++) {
 					if (j == i) { k++; }
 					newArray[j] = accountArray[k];
 					k++;
 				}
-				accountArray = newArray;
+				this.accountArray = newArray;
 				return;
 			}
 		}

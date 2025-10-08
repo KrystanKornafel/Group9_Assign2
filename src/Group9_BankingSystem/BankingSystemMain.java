@@ -40,6 +40,8 @@ public class BankingSystemMain {
 			System.out.println("a: Create a new account");
 			System.out.println("da: Display an account");
 			System.out.println("dc: Display a client");
+			System.out.println("ac: Add a client to an account");
+			System.out.println("rc: Remove a client from an account");
 			System.out.println("q: Quit program");
 			
 			//prompt the user to choose an option from the menu
@@ -63,6 +65,14 @@ public class BankingSystemMain {
 			case "dc":
 				//print out the information of the specified client
 				displayClient(); //method added to print client info
+				break;
+			case "ac":
+				//add a specified user to a specified account
+				addClientToAccount();
+				break;
+			case "rc":
+				//remove a specified user from a specified account
+				removeClientFromAccount();
 				break;
 			case "q":
 				System.out.println("Thank you for using the BMO program!");
@@ -116,13 +126,13 @@ public class BankingSystemMain {
 				input.nextLine(); // consume newline
 				System.out.print("Enter business type (investor/individual/small/large): ");
 				String businessType = input.nextLine();
-				newClient = new Adult(name, isBMOMember, null, clientNumber, businessType);
+				newClient = new Adult(name, isBMOMember, clientNumber, businessType);
 				break;
 			case "student":
-				newClient = new Student(name, isBMOMember, null, clientNumber);
+				newClient = new Student(name, isBMOMember, clientNumber);
 				break;
 			case "minor":
-				newClient = new Minor(name, isBMOMember, null, clientNumber);
+				newClient = new Minor(name, isBMOMember, clientNumber);
 				break;
 			default:
 				System.out.println("Error: Invalid client type.");
@@ -297,11 +307,108 @@ public class BankingSystemMain {
 		
 		//list all accounts belonging to the client
 		System.out.println("Accounts linked to this client:");
-		for (Account a : accounts) {
+		for (Account a : found.getAccountArray()) {
 			//check if account belongs to this client
 			if (a != null) {
-				a.listClients();
+				System.out.println("Account Number: " + a.getAccountNum());
+				if (a instanceof Checking) {
+					Checking c = (Checking) a;
+					System.out.println("Type: Checking");
+					System.out.println("Nickname: " + c.getNickname());
+				}
+				else if (a instanceof Savings) {
+					Savings s = (Savings) a;
+					System.out.println("Type: Savings");
+					System.out.println("Nickname: " + s.getNickname());
+					System.out.println("Interest Rate: " + s.getInterestRate());
+				}
+				else if (a instanceof Investment) {
+					Investment i = (Investment) a;
+					System.out.println("Type: Investment");
+					System.out.println("Nickname: " + i.getNickname());
+				}
+				else if (a instanceof Loan) {
+					Loan l = (Loan) a;
+					System.out.println("Type: Loan");
+					System.out.println("Interest Rate: " + l.getInterestRate());
+				}
 			}
+		}
+	}
+	
+	
+	private static void addClientToAccount() {
+		System.out.print("Enter client number to add to account: ");
+		long clientNum = input.nextLong();
+		
+		Client found = null;
+		for (Client c : clients) {
+			if (c.getClientNumber() == clientNum) {
+				found = c;
+				break;
+			}
+		}
+		
+		if (found == null) {
+			System.out.println("Error: Client not found.");
+			return;
+		}
+		
+		System.out.print("Enter account number to add client to: ");
+		long accountNum = input.nextLong();
+		
+		Account found2 = null;
+		for (Account a : accounts) {
+			if (a.getAccountNum() == accountNum) {
+				found2 = a;
+				break;
+			}
+		}
+		
+		if (found2 == null) {
+			System.out.println("Error: Account not found.");
+			return;
+		}
+		if (found2.addClient(found)) {
+			found.addAccount(found2);
+		}
+	}
+	
+	
+	private static void removeClientFromAccount() {
+		System.out.print("Enter client number to remove from account: ");
+		long clientNum = input.nextLong();
+		
+		Client found = null;
+		for (Client c : clients) {
+			if (c.getClientNumber() == clientNum) {
+				found = c;
+				break;
+			}
+		}
+		
+		if (found == null) {
+			System.out.println("Error: Client not found.");
+			return;
+		}
+		
+		System.out.print("Enter account number to remove client from: ");
+		long accountNum = input.nextLong();
+		
+		Account found2 = null;
+		for (Account a : accounts) {
+			if (a.getAccountNum() == accountNum) {
+				found2 = a;
+				break;
+			}
+		}
+		
+		if (found2 == null) {
+			System.out.println("Error: Account not found.");
+			return;
+		}
+		if(found2.removeClient(found.getClientNumber())) {
+			found.removeAccount(found2.getAccountNum());
 		}
 	}
 }
