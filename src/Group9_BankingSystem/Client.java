@@ -33,6 +33,7 @@ import java.util.Scanner;
 		this.accountArray = new Account[0];
 		this.numAccounts = 0;
 		this.clientNumber = clientNumber;
+		this.loyaltyPoints = 0;
 	}
 	
 	protected Account[] getAccountArray(){
