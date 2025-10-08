@@ -40,6 +40,8 @@ public class BankingSystemMain {
 			System.out.println("a: Create a new account");
 			System.out.println("da: Display an account");
 			System.out.println("dc: Display a client");
+			System.out.println("ap: Add points to the client");
+			System.out.println("rp: Remove the points from the client");
 			System.out.println("ac: Add a client to an account");
 			System.out.println("rc: Remove a client from an account");
 			System.out.println("q: Quit program");
@@ -66,6 +68,13 @@ public class BankingSystemMain {
 				//print out the information of the specified client
 				displayClient(); //method added to print client info
 				break;
+			case "ap": 
+				//add points
+				addPoints(); //need the client's info
+				break;
+			case "rp":
+				//remove points
+				removePoints(); //need the client's info
 			case "ac":
 				//add a specified user to a specified account
 				addClientToAccount();
@@ -410,5 +419,15 @@ public class BankingSystemMain {
 		if(found2.removeClient(found.getClientNumber())) {
 			found.removeAccount(found2.getAccountNum());
 		}
+	}
+	
+	private static void addPoints () {
+		//prompt user to enter the client information to look up the client
+		//once the client is found, can add points to that client
+	}
+	
+	private static void removePoints () {
+		//prompt user to enter the client information to look up the client
+		//once the client is found, can remove points to that client
 	}
 }
